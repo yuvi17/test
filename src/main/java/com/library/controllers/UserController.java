@@ -65,7 +65,7 @@ public class UserController {
 	public UserResponse searchBook(@PathVariable String param,@PathVariable String value){
 		if(param.equals("name")) {
 			return userDAO.getUserByName(value);
-		} else if(param.equals("name")) {
+		} else if(param.equals("email")) {
 			return userDAO.getUserByEmail(value);
 		} else if(param.equals("id")) {
 			return userDAO.getUserById(value);
