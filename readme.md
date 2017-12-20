@@ -1,4 +1,4 @@
-Instructions to run :
+#H3 Instructions to run :
 
 Run the jar inside the target folder
 Ensure java is installed
@@ -8,7 +8,7 @@ This project has several APIs that can be used to access it.
 
 
 
-To Add a book
+#H2 To Add a book
 
 Url: /addBook
 method: POST
@@ -21,7 +21,7 @@ sample request body :
 	"description": "The fifth installment of J.K. Rowling's magical harry potter universe."
 }
 
-To get List of all Boooks
+#H2 To get List of all Boooks
 
 Url: /getAllBooks
 method: GET
@@ -43,7 +43,7 @@ response :
 }
 
 
-To Search a Book
+#H2 To Search a Book
 url: /searchBook/{param}/{value}
 
 Accepted Params : 
@@ -54,7 +54,7 @@ Accepted Params :
 value = title/author/id of user to be searched. Matches partial title/author(not ids), is case sensitive
 
 
-To Add a User
+#H2 To Add a User
 
 Url: /addUser
 Method :  POST
@@ -70,7 +70,7 @@ sample request body
 
 // Will not let a user be added whose email has already been regsitered
 
-To Search a User
+#H2 To Search a User
 Url: /searchUser/{param}/{value}
 
 Accepted Params : 
@@ -95,7 +95,7 @@ response :
     "status": 200
 }
 
-To Borrow a Book
+#H2 To Borrow a Book
 
 url: /borrow
 Method : POST
@@ -113,20 +113,20 @@ Sample Request Body :
 
 // Will return with appropriate response if the user's book borrow limit has exceeded
 
-Responses : 
-Issued Successfully
+#H2 Responses : 
+#H4 Issued Successfully
 {
 
     "message": "Issued to you",
     "status": 201
 }
-Already in Circulation
+#H4 Already in Circulation
 {
 
     "message": "Book has already been issued",
     "status": 201
 }
-Limit Exceeded
+#H4 Limit Exceeded
 {
 
     "message": "You've exceeded the borrow limit",
@@ -135,7 +135,7 @@ Limit Exceeded
 
 
 
-To Return a Book
+#H2 To Return a Book
 
 url: /back
 Method : POST
