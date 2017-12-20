@@ -27,16 +27,20 @@ Url: /getAllBooks
 method: GET
 response :
 
-[
-    {
-        "title": "Harry Potter",
-        "author": "J.K. Rowling",
-        "description": null,
-        "status": "Free",
-        "addedTimeStamp": "Wed Dec 20 22:34:34 IST 2017",
-        "id": "8570b22caa6c40d6ab305206e293def3"
-    }
-]
+{
+
+	[
+	    {
+
+		"title": "Harry Potter",
+		"author": "J.K. Rowling",
+		"description": null,
+		"status": "Free",
+		"addedTimeStamp": "Wed Dec 20 22:34:34 IST 2017",
+		"id": "8570b22caa6c40d6ab305206e293def3"
+	    }
+	]
+}
 
 
 To Search a Book
@@ -79,6 +83,7 @@ value = name/id of user to be searched. Matches partial names(not ids), is case 
 response :
 
 {
+
     "user": {
         "name": "Yuvraj Jaiswal",
         "userId": "113d2c8461214052830162136c4e4ca2",
@@ -97,6 +102,7 @@ Method : POST
 Sample Request Body :
 
 {
+
 	"userId" : "113d2c8461214052830162136c4e4ca2",
 	"bookId" : "8570b22caa6c40d6ab305206e293def3"
 }
@@ -110,16 +116,19 @@ Sample Request Body :
 Responses : 
 Issued Successfully
 {
+
     "message": "Issued to you",
     "status": 201
 }
 Already in Circulation
 {
+
     "message": "Book has already been issued",
     "status": 201
 }
 Limit Exceeded
 {
+
     "message": "You've exceeded the borrow limit",
     "status": 201
 }
@@ -133,6 +142,7 @@ Method : POST
 Sample Request Body :
 
 {
+
 	"userId" : "113d2c8461214052830162136c4e4ca2",
 	"bookId" : "8570b22caa6c40d6ab305206e293def3"
 }
