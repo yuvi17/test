@@ -36,6 +36,7 @@ public class BookController {
 		
 		book.setId(generateBookId());
 		book.setAddedTimeStamp(new Date().toString());
+		book.setStatus("Free");
 		Boolean isAdded = booksDAO.addBook(book);
 		
 		if(isAdded) {

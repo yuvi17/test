@@ -16,7 +16,7 @@ import com.library.models.BookSearchResponse;
 @Repository
 public class BooksDAO {
 	
-	private List<Book> books = new ArrayList<>();
+	private static List<Book> books = new ArrayList<>();
 	
 	/*
 	 * TODO
@@ -26,7 +26,7 @@ public class BooksDAO {
 	 */
 	
 	public List<Book> getBooks() {
-		return this.books;
+		return BooksDAO.books;
 	}
 	
 	
@@ -43,9 +43,11 @@ public class BooksDAO {
 	}
 	
 	
-	public void updateBookStatus(String status) {
-		for(Book book : this.books) {
-			book.setStatus(status);
+	public void updateBookStatus(String bookId,String status) {
+		for(Book book : BooksDAO.books) {
+				if(book.getId().equals(bookId)) {
+					book.setStatus(status);
+				}
 			
 		}
 		
@@ -65,7 +67,7 @@ public class BooksDAO {
 		response.setStatus("Success");
 		response.setMessage("Book Found");
 		int flag = 0;
-		for(Book book : this.books) {
+		for(Book book : BooksDAO.books) {
 			if(book.getTitle().contains(title)) {
 				response.setBook(book);
 				flag = 1;
@@ -90,7 +92,7 @@ public class BooksDAO {
 		response.setStatus("Success");
 		response.setMessage("Book Found");
 		int flag = 0;
-		for(Book book : this.books) {
+		for(Book book : BooksDAO.books) {
 			if(book.getAuthor().contains(author)) {
 				response.setBook(book);
 				flag = 1;
@@ -115,7 +117,7 @@ public class BooksDAO {
 		response.setStatus("Success");
 		response.setMessage("Book Found");
 		int flag = 0;
-		for(Book book : this.books) {
+		for(Book book : BooksDAO.books) {
 			if(book.getId().equals(Id)) {
 				response.setBook(book);
 				flag = 1;

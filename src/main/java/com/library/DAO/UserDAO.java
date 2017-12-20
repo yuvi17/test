@@ -12,7 +12,7 @@ import com.library.models.UserResponse;
 public class UserDAO {
 
 	
-	private List<User> users = new ArrayList<>();
+	private static List<User> users = new ArrayList<>();
 	
 	/*
 	 * TODO
@@ -29,6 +29,7 @@ public class UserDAO {
 		
 		// User does not exist, can be added
 		if(existingUser.getStatus() == 404) {
+			UserDAO.users.add(user);
 			response.setMessage("User has been added");
 			response.setStatus(201);
 			response.setUser(user);
@@ -54,7 +55,7 @@ public class UserDAO {
 		UserResponse response = new UserResponse();
 		
 		int flag = 0;
-		for(User user : this.users) {
+		for(User user : UserDAO.users) {
 			if(user.getUserId().equals(id)) {
 				response.setStatus(200);
 				response.setMessage("User Found");
@@ -81,7 +82,7 @@ public class UserDAO {
 		UserResponse response = new UserResponse();
 		
 		int flag = 0;
-		for(User user : this.users) {
+		for(User user : UserDAO.users) {
 			if(user.getEmail().equals(email)) {
 				response.setStatus(200);
 				response.setMessage("User Found");
@@ -109,7 +110,7 @@ public class UserDAO {
 		UserResponse response = new UserResponse();
 		
 		int flag = 0;
-		for(User user : this.users) {
+		for(User user : UserDAO.users) {
 			if(user.getName().contains(name)) {
 				response.setStatus(200);
 				response.setMessage("User Found");
@@ -123,6 +124,22 @@ public class UserDAO {
 		}
 		
 		return response;
+	}
+	
+	public void IncrementIssueCount(String userId) {
+		for(User user: UserDAO.users) {
+			if(user.getUserId().equals(userId)) {
+				user.incrementBorrowedCount();
+			}
+		}
+	}
+	
+	public void DecrementIssueCount(String userId) {
+		for(User user: UserDAO.users) {
+			if(user.getUserId().equals(userId)) {
+				user.decrementBorrowedCount();
+			}
+		}
 	}
 	
 	

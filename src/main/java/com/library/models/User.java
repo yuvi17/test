@@ -13,7 +13,7 @@ public class User {
 	
 	private String password;
 	
-	private int borrowedCount;
+	private int borrowedCount = 0;
 	
 	
 	public User() {
@@ -82,11 +82,16 @@ public class User {
 	public void incrementBorrowedCount() {
 		this.borrowedCount = this.borrowedCount + 1;
 	}
+	
+	
+	public void decrementBorrowedCount() {
+		this.borrowedCount = this.borrowedCount - 1;
+	}
 
 	/**
 	 * @param borrowedCount the borrowedCount to set
 	 */
-	public int getBorrowedCount(int borrowedCount) {
+	public int getBorrowedCount() {
 		return borrowedCount;
 	}
 	

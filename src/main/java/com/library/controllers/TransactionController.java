@@ -1,38 +1,48 @@
 package com.library.controllers;
 
-import java.util.UUID;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.library.DAO.BorrowedDAO;
 import com.library.models.Transaction;
+import com.library.models.TransactionResponse;
 
 @RestController
 public class TransactionController {
 	
 	
+	@Autowired
+	BorrowedDAO borrowedDAO;
+	
 	@CrossOrigin
 	@RequestMapping("/borrow")
-	public void lend(@RequestBody Transaction transaction) {
-		
-		transaction.setTransactionId(generateId());
-		transaction.setStatus(0);
+	public TransactionResponse lend(@RequestBody Transaction transaction) {
+		return borrowedDAO.lendBook(transaction);
 		
 	}
 	
 	@CrossOrigin
 	@RequestMapping("/back")
-	public void back(@RequestBody Transaction transaction) {
+	public TransactionResponse back(@RequestBody Transaction transaction) {
 		
-		transaction.setTransactionId(generateId());
-		transaction.setStatus(1);
+		return borrowedDAO.returnBook(transaction);
 		
 	}
 	
-	private String generateId( ){
-		return UUID.randomUUID().toString().replace("-", "");
+	/*
+	 * for debugging purpose
+	 */
+	
+	@CrossOrigin
+	@RequestMapping("/getAllTransactions")
+	public List<Transaction> getAllTransaction() {
+		return BorrowedDAO.getTransactions();
 	}
+	
 	 
 }
