@@ -1,4 +1,4 @@
-#H3 Instructions to run :
+# Instructions to run :
 
 Run the jar inside the target folder
 Ensure java is installed
@@ -8,42 +8,41 @@ This project has several APIs that can be used to access it.
 
 
 
-#H2 To Add a book
+# To Add a book
 
 Url: /addBook
 method: POST
 sample request body :
-
+```
 {
-
 	"title" : "Harry Potter and the Order of Phoenix",
 	"author" : "J.K. Rowling",
 	"description": "The fifth installment of J.K. Rowling's magical harry potter universe."
 }
+```
 
-#H2 To get List of all Boooks
+# To get List of all Boooks
 
 Url: /getAllBooks
 method: GET
 response :
 
-{
+```
+[
+    {
 
-	[
-	    {
-
-		"title": "Harry Potter",
-		"author": "J.K. Rowling",
-		"description": null,
-		"status": "Free",
-		"addedTimeStamp": "Wed Dec 20 22:34:34 IST 2017",
-		"id": "8570b22caa6c40d6ab305206e293def3"
-	    }
-	]
-}
+	"title": "Harry Potter",
+	"author": "J.K. Rowling",
+	"description": null,
+	"status": "Free",
+	"addedTimeStamp": "Wed Dec 20 22:34:34 IST 2017",
+	"id": "8570b22caa6c40d6ab305206e293def3"
+   }
+]
+```
 
 
-#H2 To Search a Book
+# To Search a Book
 url: /searchBook/{param}/{value}
 
 Accepted Params : 
@@ -54,23 +53,22 @@ Accepted Params :
 value = title/author/id of user to be searched. Matches partial title/author(not ids), is case sensitive
 
 
-#H2 To Add a User
+# To Add a User
 
 Url: /addUser
 Method :  POST
 sample request body
-
+```
 {
-
 	"name" : "Yuvraj Jaiswal",
 	"email" : "kumaryuvraj118@gmail.com",
 	"password" : "yourpasswordhere"
 
 }
+```
+## Will not let a user be added whose email has already been regsitered
 
-// Will not let a user be added whose email has already been regsitered
-
-#H2 To Search a User
+# To Search a User
 Url: /searchUser/{param}/{value}
 
 Accepted Params : 
@@ -95,7 +93,7 @@ response :
     "status": 200
 }
 
-#H2 To Borrow a Book
+# To Borrow a Book
 
 url: /borrow
 Method : POST
@@ -107,46 +105,47 @@ Sample Request Body :
 	"bookId" : "8570b22caa6c40d6ab305206e293def3"
 }
 
-// UserId and bookID to be taken from the response of above requests
+## UserId and bookID to be taken from the response of above requests
 
-// Will return with appropriate response if the book is already borrowed
+## Will return with appropriate response if the book is already borrowed
 
-// Will return with appropriate response if the user's book borrow limit has exceeded
+## Will return with appropriate response if the user's book borrow limit has exceeded
 
-#H2 Responses : 
-#H4 Issued Successfully
+# Responses : 
+### Issued Successfully
 {
 
     "message": "Issued to you",
     "status": 201
 }
-#H4 Already in Circulation
+### Already in Circulation
 {
 
     "message": "Book has already been issued",
     "status": 201
 }
-#H4 Limit Exceeded
+### Limit Exceeded
+```
 {
-
     "message": "You've exceeded the borrow limit",
     "status": 201
 }
+```
 
 
-
-#H2 To Return a Book
+# To Return a Book
 
 url: /back
 Method : POST
 Sample Request Body :
 
+```
 {
-
 	"userId" : "113d2c8461214052830162136c4e4ca2",
 	"bookId" : "8570b22caa6c40d6ab305206e293def3"
 }
+```
 
-// UserId and bookID to be taken from the response of above requests
+## UserId and bookID to be taken from the response of above requests
 
 
